@@ -19,6 +19,17 @@
 
      <ul class="menu-inner py-1">
          <!-- Dashboards -->
+         @can('penerimahibah.index')
+             <li class="menu-item {{ request()->is(['penerimahibah', 'penerimahibah/*']) ? 'active' : '' }} "">
+                 <a href="{{ route('penerimahibah.index') }}" class="menu-link">
+                     <i class="menu-icon tf-icons ti ti-users"></i>
+                     <div>Penerima Hibah</div>
+                 </a>
+             </li>
+         @endcan
+
+
+         <!--Setings-->
          <li
              class="menu-item {{ request()->is([
                  'roles',
@@ -53,7 +64,8 @@
                          <div>Permission</div>
                      </a>
                  </li>
-                 <li class="menu-item  {{ request()->is(['permissiongroups', 'permissiongroups/*']) ? 'active' : '' }}">
+                 <li
+                     class="menu-item  {{ request()->is(['permissiongroups', 'permissiongroups/*']) ? 'active' : '' }}">
                      <a href="{{ route('permissiongroups.index') }}" class="menu-link">
                          <div>Group Permission</div>
                      </a>

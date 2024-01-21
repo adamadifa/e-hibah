@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\PenerimahibahController;
 use App\Http\Controllers\Permission_groupController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Models\Penerimahibah;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Models\Role;
 
@@ -72,6 +74,16 @@ Route::middleware('auth')->group(function () {
         Route::get('/users/{id}/edit', 'edit')->name('users.edit');
         Route::put('/users/{id}/update', 'update')->name('users.update');
         Route::delete('/users/{id}/delete', 'destroy')->name('users.delete');
+    });
+
+    Route::controller(PenerimahibahController::class)->group(function () {
+        Route::get('/penerimahibah', 'index')->name('penerimahibah.index');
+        Route::get('/penerimahibah/{kode_penerimahibah}/show', 'show')->name('penerimahibah.show');
+        Route::get('/penerimahibah/create', 'create')->name('penerimahibah.create');
+        Route::post('/penerimahibah', 'store')->name('penerimahibah.store');
+        Route::get('/penerimahibah/{kode_penerimahibah}/edit', 'edit')->name('penerimahibah.edit');
+        Route::put('/penerimahibah/{kode_penerimahibah}/update', 'update')->name('penerimahibah.update');
+        Route::delete('/penerimahibah/{kode_penerimahibah}/delete', 'destroy')->name('penerimahibah.delete');
     });
 });
 
