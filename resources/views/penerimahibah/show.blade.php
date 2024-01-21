@@ -49,4 +49,100 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-xl-4 col-lg-5 col-md-5">
+        <!-- About User -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <small class="card-text text-uppercase">Penerima Hibah</small>
+                <ul class="list-unstyled mb-4 mt-3">
+                    <li class="d-flex align-items-center mb-3">
+                        <i class="ti ti-user text-heading"></i><span class="fw-medium mx-2 text-heading">Nama Penerima
+                            Hibah :</span> <span>{{ $penerimahibah->nama }}</span>
+                    </li>
+                    <li class="d-flex align-items-center mb-3">
+                        <i class="ti ti-map-pin text-heading"></i><span
+                            class="fw-medium mx-2 text-heading">Alamat:</span>
+                        <span>{{ $penerimahibah->alamat }}</span>
+                    </li>
+                    <li class="d-flex align-items-center mb-3">
+                        <i class="ti ti-barcode text-heading"></i><span class="fw-medium mx-2 text-heading">No.
+                            Izin:</span>
+                        <span>{{ $penerimahibah->no_izin }}</span>
+                    </li>
+                    <li class="d-flex align-items-center mb-3">
+                        <i class="ti ti-phone text-heading"></i><span class="fw-medium mx-2 text-heading">No.
+                            Telepon:</span>
+                        <span>{{ $penerimahibah->no_telepon }}</span>
+                    </li>
+                    <li class="d-flex align-items-center mb-3">
+                        <i class="ti ti-mail text-heading"></i><span class="fw-medium mx-2 text-heading">Email:</span>
+                        <span>{{ $penerimahibah->email }}</span>
+                    </li>
+                </ul>
+                <small class="card-text text-uppercase">Penanggung Jawab</small>
+                <ul class="list-unstyled mb-4 mt-3">
+                    <li class="d-flex align-items-center mb-3">
+                        <i class="ti ti-user"></i><span class="fw-medium mx-2 text-heading">Penanggung
+                            Jawab:</span>
+                        <span>{{ $penerimahibah->penanggung_jawab }}</span>
+                    </li>
+                    <li class="d-flex align-items-center mb-3">
+                        <i class="ti ti-phone-call"></i><span class="fw-medium mx-2 text-heading">No. Telepon:</span>
+                        <span>{{ $penerimahibah->no_telepon_penanggung_jawab }}</span>
+                    </li>
+                    <li class="d-flex align-items-center mb-3">
+                        <i class="ti ti-mail"></i><span class="fw-medium mx-2 text-heading">Email:</span>
+                        <span>{{ $penerimahibah->email_penanggung_jawab }}</span>
+                    </li>
+                </ul>
+                <small class="card-text text-uppercase">Data Rekening</small>
+                <ul class="list-unstyled mb-0 mt-3">
+                    <li class="d-flex align-items-center mb-3">
+                        <i class="ti ti-building"></i><span class="fw-medium mx-2 text-heading">Nama Bank:</span>
+                        <span>{{ $penerimahibah->nama_bank }}</span>
+                    </li>
+                    <li class="d-flex align-items-center mb-3">
+                        <i class="ti ti-credit-card"></i><span class="fw-medium mx-2 text-heading">No. Rekening:</span>
+                        <span>{{ $penerimahibah->no_rekening }}</span>
+                    </li>
+                    <li class="d-flex align-items-center mb-3">
+                        <i class="ti ti-user"></i><span class="fw-medium mx-2 text-heading">Nama Pemilik
+                            Rekening:</span>
+                        <span>{{ $penerimahibah->nama_pemilik_rekening }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--/ About User -->
+
+
+    </div>
+    <div class="col-xl-8 col-lg-7 col-md-7">
+        <!-- Activity Timeline -->
+        <div class="card card-action mb-4">
+            <div class="card-header align-items-center">
+                <h5 class="card-action-title mb-0">Riwayat Penerimaan Dana Hibah</h5>
+
+            </div>
+            <div class="card-body ">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Kode Proposal</th>
+                            <th>Tanggal</th>
+                            <th>Perihal</th>
+                            <th>Tahun Anggaran</th>
+                            <th>Total Ajuan</th>
+                            <th>Total Diterima</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <!--/ Activity Timeline -->
+    </div>
+</div>
 @endsection

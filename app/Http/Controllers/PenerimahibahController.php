@@ -12,6 +12,9 @@ class PenerimahibahController extends Controller
     public function index(Request $request)
     {
         $query = Penerimahibah::query();
+        if ($request->nama) {
+            $query->where('nama', 'like', '%' . $request->nama . '%');
+        }
         $penerimahibah = $query->paginate(10);
         $penerimahibah->appends(request()->all());
         return view('penerimahibah.index', compact('penerimahibah'));

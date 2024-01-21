@@ -5,6 +5,7 @@ use App\Http\Controllers\Permission_groupController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TahunanggaranController;
 use App\Http\Controllers\UserController;
 use App\Models\Penerimahibah;
 use Illuminate\Support\Facades\Route;
@@ -84,6 +85,15 @@ Route::middleware('auth')->group(function () {
         Route::get('/penerimahibah/{kode_penerimahibah}/edit', 'edit')->name('penerimahibah.edit');
         Route::put('/penerimahibah/{kode_penerimahibah}/update', 'update')->name('penerimahibah.update');
         Route::delete('/penerimahibah/{kode_penerimahibah}/delete', 'destroy')->name('penerimahibah.delete');
+    });
+
+    Route::controller(TahunanggaranController::class)->group(function () {
+        Route::get('/tahunanggaran', 'index')->name('tahunanggaran.index');
+        Route::get('/tahunanggaran/create', 'create')->name('tahunanggaran.create');
+        Route::post('/tahtahunanggaranunaggaran', 'store')->name('tahunanggaran.store');
+        Route::get('/tahunanggaran/{kode_anggaran}/edit', 'edit')->name('tahunanggaran.edit');
+        Route::put('/tahunanggaran/{id}/update', 'update')->name('tahunanggaran.update');
+        Route::delete('/tahunanggaran/{id}/delete', 'destroy')->name('tahunanggaran.delete');
     });
 });
 

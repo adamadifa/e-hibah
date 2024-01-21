@@ -11,3 +11,9 @@ function buatkode($nomor_terakhir, $kunci, $jumlah_karakter = 0)
     $kode = $kunci . $nomor_baru_plus_nol;
     return $kode;
 }
+
+
+function rupiah($nilai)
+{
+    return number_format($nilai, '0', ',', '.');
+}

@@ -18,8 +18,8 @@
                         <form action="{{ route('penerimahibah.index') }}">
                             <div class="row">
                                 <div class="col-lg-10 col-sm-12 col-md-12">
-                                    <x-input-with-icon label="Search Name" value="{{ Request('name') }}" name="name"
-                                        icon="ti ti-search" />
+                                    <x-input-with-icon label="Cari Nama Penerima Hibah" value="{{ Request('nama') }}"
+                                        name="nama" icon="ti ti-search" />
                                 </div>
                                 <div class="col-lg-2 col-sm-12 col-md-12">
                                     <button class="btn btn-primary">Cari</button>
@@ -91,7 +91,7 @@
                             </table>
                         </div>
                         <div style="float: right;">
-
+                            {{ $penerimahibah->links() }}
                         </div>
                     </div>
                 </div>
