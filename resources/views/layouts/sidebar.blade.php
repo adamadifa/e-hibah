@@ -27,7 +27,7 @@
                  </a>
              </li>
          @endcan
-         <li class="menu-item {{ request()->is(['suratmasuk', 'suratmasuk/*']) ? 'active' : '' }} "">
+         <li class="menu-item {{ request()->is(['proposal', 'proposal/*']) ? 'active' : '' }} "">
              <a href="#" class="menu-link">
                  <i class="menu-icon tf-icons ti ti-inbox"></i>
                  <div>Surat Masuk</div>

@@ -4,6 +4,7 @@ use App\Http\Controllers\PenerimahibahController;
 use App\Http\Controllers\Permission_groupController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TahunanggaranController;
 use App\Http\Controllers\UserController;
@@ -94,6 +95,16 @@ Route::middleware('auth')->group(function () {
         Route::get('/tahunanggaran/{kode_anggaran}/edit', 'edit')->name('tahunanggaran.edit');
         Route::put('/tahunanggaran/{id}/update', 'update')->name('tahunanggaran.update');
         Route::delete('/tahunanggaran/{id}/delete', 'destroy')->name('tahunanggaran.delete');
+    });
+
+
+    Route::controller(ProposalController::class)->group(function () {
+        Route::get('/proposal', 'index')->name('proposal.index');
+        Route::get('/proposal/{kode_penerimahibah}/create', 'create')->name('proposal.create');
+        Route::post('/proposal', 'store')->name('proposal.store');
+        Route::get('/proposal/{kode_anggaran}/edit', 'edit')->name('proposal.edit');
+        Route::put('/proposal/{id}/update', 'update')->name('proposal.update');
+        Route::delete('/proposal/{id}/delete', 'destroy')->name('proposal.delete');
     });
 });
 

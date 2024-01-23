@@ -81,6 +81,13 @@
                                                                 </a>
                                                             </form>
                                                         </div>
+                                                        <div>
+                                                            <a href="{{ route('proposal.create', Crypt::encrypt($d->kode_penerimahibah)) }}"
+                                                                class="btn btn-xs btn-primary ms-2">
+                                                                <i class="ti ti-file-text me-2"></i>
+                                                                Daftarkan Proposal
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>

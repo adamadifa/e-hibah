@@ -1,8 +1,8 @@
 (function () {
-    const formcreateAnggaran = document.querySelector('#formcreateAnggaran');
+    const formeditAnggaran = document.querySelector('#formeditAnggaran');
     // Form validation for Add new record
-    if (formcreateAnggaran) {
-        const fv = FormValidation.formValidation(formcreateAnggaran, {
+    if (formeditAnggaran) {
+        const fv = FormValidation.formValidation(formeditAnggaran, {
             fields: {
                 tahun: {
                     validators: {

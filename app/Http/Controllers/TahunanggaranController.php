@@ -36,7 +36,7 @@ class TahunanggaranController extends Controller
             Tahunanggaran::create([
                 'kode_anggaran' => 'TA' . $request->tahun,
                 'tahun' => $request->tahun,
-                'jumlah_anggaran' => $request->jumlah_anggaran,
+                'jumlah_anggaran' => str_replace(".", "", $request->jumlah_anggaran),
                 'is_active' => 1
             ]);
 
@@ -73,7 +73,7 @@ class TahunanggaranController extends Controller
         try {
             Tahunanggaran::where('kode_anggaran', $kode_anggaran)->update([
                 'tahun' => $request->tahun,
-                'jumlah_anggaran' => $request->jumlah_anggaran
+                'jumlah_anggaran' => str_replace(".", "", $request->jumlah_anggaran),
             ]);
 
             return Redirect::back()->with(['success' => 'Data Berhasil di Update']);

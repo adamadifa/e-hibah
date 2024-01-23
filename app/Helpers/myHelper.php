@@ -17,3 +17,10 @@ function rupiah($nilai)
 {
     return number_format($nilai, '0', ',', '.');
 }
+
+
+function getdocPenerimahibah($file)
+{
+    $url = url('/storage/doc-penerimahibah/' . $file);
+    return $url;
+}

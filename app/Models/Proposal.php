@@ -2,15 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Penerimahibah extends Model
+class Proposal extends Model
 {
     use HasFactory;
-    protected $table = "penerimahibah";
+    protected $table = "proposal";
     protected $guarded = [];
-    protected $primaryKey = "kode_penerimahibah";
+    protected $primaryKey = "no_registrasi";
     public $incrementing = false;
 }
