@@ -4,6 +4,13 @@
     if (formcreateProposal) {
         const fv = FormValidation.formValidation(formcreateProposal, {
             fields: {
+                tanggal_proposal: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Tanggal Proposal  Harus Diisi'
+                        }
+                    }
+                },
                 nama: {
                     validators: {
                         notEmpty: {
@@ -103,6 +110,71 @@
                             extension: 'jpg,png,jpeg',
                             type: 'image/png,image/jpeg',
                             message: 'File Buku Renening Harus JPG, JPEG,atau PNG',
+                        },
+                    }
+                },
+
+                no_surat: {
+                    validators: {
+                        notEmpty: {
+                            message: 'No. Surat  Harus Diisi'
+                        }
+                    }
+                },
+
+                tanggal_surat: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Tanggal Surat  Harus Diisi'
+                        }
+                    }
+                },
+
+                id_jenis_pengajuan_dana: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Jenis Pengajuan  Harus Dipilih'
+                        }
+                    }
+                },
+                kode_anggaran: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Tahun Anggaran  Harus Dipilih'
+                        }
+                    }
+                },
+
+                jumlah_dana: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Jumlah Dana Harus Diisi'
+                        },
+                        numeric: {
+                            decimalSeparator: ',',
+                            thousandsSeparator: '.',
+                            message: 'Jumlah Dana Harus Berupa Angka'
+                        }
+                    }
+                },
+
+                judul_proposal: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Judul Proposal Harus Diisi'
+                        }
+                    }
+                },
+
+                lampiran_surat: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Lampiran Surat Harus di Upload'
+                        },
+                        file: {
+                            extension: 'pdf',
+                            type: 'application/pdf',
+                            message: 'Lampiran Surat / Proposal Harus Berbentuk PDF',
                         },
                     }
                 },

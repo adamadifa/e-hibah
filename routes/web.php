@@ -101,10 +101,11 @@ Route::middleware('auth')->group(function () {
     Route::controller(ProposalController::class)->group(function () {
         Route::get('/proposal', 'index')->name('proposal.index');
         Route::get('/proposal/{kode_penerimahibah}/create', 'create')->name('proposal.create');
-        Route::post('/proposal', 'store')->name('proposal.store');
+        Route::post('/proposal/{kode_penerimahibah}/store', 'store')->name('proposal.store');
         Route::get('/proposal/{kode_anggaran}/edit', 'edit')->name('proposal.edit');
         Route::put('/proposal/{id}/update', 'update')->name('proposal.update');
         Route::delete('/proposal/{id}/delete', 'destroy')->name('proposal.delete');
+        Route::get('/proposal/{id}/show', 'show')->name('proposal.show');
     });
 });
 

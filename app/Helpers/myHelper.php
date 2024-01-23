@@ -24,3 +24,18 @@ function getdocPenerimahibah($file)
     $url = url('/storage/doc-penerimahibah/' . $file);
     return $url;
 }
+
+
+
+function toNumber($value)
+{
+    $number = str_replace(".", "", $value);
+    return $number;
+}
+
+
+function camelCase($value)
+{
+    $string = ucwords(strtolower($value));
+    return $string;
+}

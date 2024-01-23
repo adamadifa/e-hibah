@@ -20,7 +20,7 @@ return new class extends Migration
             $table->char('id_jenispengajuan_dana', 1);
             $table->char('kode_anggaran', 6);
             $table->integer('jumlah_dana');
-            $table->string('judu_proposal', 100);
+            $table->string('judul_proposal', 100);
             $table->string('lampiran_surat', 21);
             $table->foreign('kode_penerimahibah')->references('kode_penerimahibah')
                 ->on('penerimahibah')->cascadeOnUpdate()

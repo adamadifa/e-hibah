@@ -5,14 +5,18 @@
 @section('navigasi')
     <span class="text-muted fw-light">Proposal</span> / Buat Proposal
 @endsection
-<form action="#" id="formcreateProposal">
+<form action="{{ route('proposal.store', Crypt::encrypt($penerimahibah->kode_penerimahibah)) }}" id="formcreateProposal"
+    method="POST" enctype="multipart/form-data">
+    @csrf
     <div class="row">
         <div class="col-lg-6 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-body">
 
                     <x-input-with-icon-label icon="ti ti-barcode" label="Auto" name="no_registrasi" readonly="true" />
-                    <x-input-with-icon-label icon="ti ti-calendar" label="Tanggal Proposal" name="tanggal_proposal" />
+                    <x-input-with-icon-label icon="ti ti-calendar" label="Tanggal Proposal" name="tanggal_proposal"
+                        datepicker="flatpickr-date" />
+
                     <div class="divider text-start">
                         <div class="divider-text fw-bold">
                             <i class="ti ti-user me-1"></i>
@@ -83,15 +87,16 @@
                         </div>
                     </div>
                     <x-input-with-icon-label icon="ti ti-barcode" label="No. Surat" name="no_surat" />
-                    <x-input-with-icon-label icon="ti ti-calendar" label="Tanggal. Surat" name="tanggal_surat" />
-                    <x-select name="id_jenis_pengajuan_dana" label="Jenis Pengajuan Dana" :data="$jenis_pengajuan_dana"
+                    <x-input-with-icon-label icon="ti ti-calendar" label="Tanggal. Surat" name="tanggal_surat"
+                        datepicker="flatpickr-date" />
+                    <x-select name="id_jenispengajuan_dana" label="Jenis Pengajuan Dana" :data="$jenis_pengajuan_dana"
                         key="id" textShow="jenis_pengajuan_dana" />
                     <x-select name="kode_anggaran" label="Tahun Anggaran" :data="$tahun_anggaran" key="kode_anggaran"
                         textShow="tahun" />
                     <x-input-with-icon-label icon="ti ti-file-text" label="Jumlah Dana Yang Di Ajukan"
                         name="jumlah_dana" align="right" />
                     <x-input-with-icon-label icon="ti ti-file-text" label="Judul Proposal" name="judul_proposal" />
-                    <x-input-file-with-label name="lampiran_surat" label="Lampiran Surat" />
+                    <x-input-file-with-label name="lampiran_surat" label="Lampiran Surat / Proposal (*pdf)" />
                     <div class="form-group">
                         <button class="btn btn-primary w-100" type="submit">
                             <i class="ti ti-send me-1"></i>
@@ -108,4 +113,9 @@
 @endsection
 @push('myscript')
 <script src="{{ asset('assets/js/pages/proposal/create.js') }}"></script>
+<script>
+    $(function() {
+        $("#jumlah_dana").maskMoney();
+    });
+</script>
 @endpush
