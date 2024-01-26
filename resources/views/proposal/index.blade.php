@@ -88,8 +88,14 @@
                                                 <td>
                                                     <div class="d-flex">
                                                         <div>
-                                                            <a href="#" class="me-2"
-                                                                id="{{ Crypt::encrypt($d->no_registrasi) }}">
+                                                            <a href="#" class="me-2 kirimProposal"
+                                                                no_registrasi="{{ Crypt::encrypt($d->no_register) }}">
+                                                                <i class="ti ti-send text-info"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <a href="{{ route('proposal.edit', Crypt::encrypt($d->no_registrasi)) }}"
+                                                                class="me-2">
                                                                 <i class="ti ti-edit text-success"></i>
                                                             </a>
                                                         </div>
@@ -120,7 +126,7 @@
                             </table>
                         </div>
                         <div style="float: right;">
-                            {{-- {{ $penerimahibah->links() }} --}}
+                            {{ $proposal->links() }}
                         </div>
                     </div>
                 </div>
@@ -128,4 +134,16 @@
         </div>
     </div>
 </div>
+<x-modal-form id="mdlkirimProposal" size="" show="loadkirimProposal" title="Tindak Lanjut Proposal" />
 @endsection
+@push('myscript')
+<script>
+    $(function() {
+        $(".kirimProposal").click(function(e) {
+            var no_registrasi = $(this).attr('no_registrasi');
+            $('#mdlkirimProposal').modal("show");
+            $("#loadkirimProposal").load('/disposisi/' + no_registrasi + '/create');
+        });
+    });
+</script>
+@endpush

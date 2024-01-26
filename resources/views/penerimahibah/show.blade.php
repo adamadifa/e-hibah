@@ -10,11 +10,11 @@
     <div class="col-12">
         <div class="card mb-4">
             <div class="user-profile-header-banner">
-                <img src="../../assets/img/pages/profile-banner.png" alt="Banner image" class="rounded-top">
+                <img src="{{ asset('assets/img/pages/profile-banner.png') }}" alt="Banner image" class="rounded-top">
             </div>
             <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
                 <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">
-                    <img src="../../assets/img/avatars/14.png" alt="user image"
+                    <img src="{{ asset('assets/img/avatars/14.png') }}" alt="user image"
                         class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
                 </div>
                 <div class="flex-grow-1 mt-3 mt-sm-5">
@@ -95,6 +95,8 @@
                         <i class="ti ti-mail"></i><span class="fw-medium mx-2 text-heading">Email:</span>
                         <span>{{ $penerimahibah->email_penanggung_jawab }}</span>
                     </li>
+                    <img src="{{ getdocPenerimahibah($penerimahibah->file_ktp) }}" alt="user-avatar"
+                        class="d-block w-px-100 h-px-100 rounded" id="uploadedAvatar">
                 </ul>
                 <small class="card-text text-uppercase">Data Rekening</small>
                 <ul class="list-unstyled mb-0 mt-3">
@@ -111,6 +113,8 @@
                             Rekening:</span>
                         <span>{{ $penerimahibah->nama_pemilik_rekening }}</span>
                     </li>
+                    <img src="{{ getdocPenerimahibah($penerimahibah->file_rekening) }}" alt="user-avatar"
+                        class="d-block w-px-100 h-px-100 rounded" id="uploadedAvatar">
                 </ul>
             </div>
         </div>
@@ -129,16 +133,34 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Kode Proposal</th>
-                            <th>Tanggal</th>
-                            <th>Perihal</th>
-                            <th>Tahun Anggaran</th>
+                            <th>Tanggal / Perihal</th>
+                            <th>Jenis Proposal</th>
+                            <th class="text-center">Tahun</th>
                             <th>Total Ajuan</th>
                             <th>Total Diterima</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                        @foreach ($proposal as $d)
+                            <tr>
+                                <td>({{ DateToIndo($d->tanggal_proposal) }}) <br> {{ $d->judul_proposal }} </td>
+
+                                <td>
+                                    @if ($d->id_jenis_proposal == 1)
+                                        <span class="badge bg-info">Pengajuan</span>
+                                    @elseif ($d->id_jenis_proposal == 2)
+                                        <span class="badge bg-success">Pencairan</span>
+                                    @endif
+                                </td>
+                                </td>
+                                <td class="text-center">{{ $d->tahun }}</td>
+                                <td class="text-end">{{ rupiah($d->jumlah_dana) }}</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>

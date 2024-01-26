@@ -40,18 +40,21 @@ class UserController extends Controller
             'role' => 'required'
         ]);
 
+
+
         try {
             $user = User::create([
                 'name' => $request->name,
                 'username' => $request->username,
                 'email' => $request->email,
                 'password' => $request->password,
+                'nip' => $request->nip
             ]);
 
             $user->assignRole($request->role);
             return Redirect::back()->with(['success' => 'Data Berhasil Disimpan']);
         } catch (\Exception $e) {
-            return Redirect::back()->with(['eror' => 'Data Gagal Disimpan']);
+            return Redirect::back()->with(['eror' => $e->getMessage()]);
         }
     }
 

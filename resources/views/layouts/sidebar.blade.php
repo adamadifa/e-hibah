@@ -27,24 +27,36 @@
                  </a>
              </li>
          @endcan
-         <li class="menu-item {{ request()->is(['proposal', 'proposal/*']) ? 'active' : '' }} "">
-             <a href="{{ route('proposal.index') }}" class="menu-link">
-                 <i class="menu-icon tf-icons ti ti-inbox"></i>
-                 <div>Surat Masuk</div>
-             </a>
-         </li>
+         @can('proposal.index')
+             <li class="menu-item {{ request()->is(['proposal', 'proposal/*']) ? 'active' : '' }} "">
+                 <a href="{{ route('proposal.index') }}" class="menu-link">
+                     <i class="menu-icon tf-icons ti ti-inbox"></i>
+                     <div>Surat Masuk</div>
+                 </a>
+             </li>
+         @endcan
+
          <li class="menu-item {{ request()->is(['disposisi', 'suratmasuk/*']) ? 'active' : '' }} "">
              <a href="#" class="menu-link">
                  <i class="menu-icon tf-icons ti ti-folder"></i>
                  <div>Disposisi Keluar</div>
              </a>
          </li>
-         <li class="menu-item {{ request()->is(['tahunanggaran', 'tahunanggaran/*']) ? 'active' : '' }} "">
-             <a href="{{ route('tahunanggaran.index') }}" class="menu-link">
-                 <i class="menu-icon tf-icons ti ti-file-description"></i>
-                 <div>Tahun Anggaran</div>
+         <li class="menu-item {{ request()->is(['pegawai', 'pegawai/*']) ? 'active' : '' }} "">
+             <a href="{{ route('pegawai.index') }}" class="menu-link">
+                 <i class="menu-icon tf-icons ti ti-user-bolt"></i>
+                 <div>Pegawai</div>
              </a>
          </li>
+         @can('tahunanggaran.index')
+             <li class="menu-item {{ request()->is(['tahunanggaran', 'tahunanggaran/*']) ? 'active' : '' }} "">
+                 <a href="{{ route('tahunanggaran.index') }}" class="menu-link">
+                     <i class="menu-icon tf-icons ti ti-file-description"></i>
+                     <div>Tahun Anggaran</div>
+                 </a>
+             </li>
+         @endcan
+
 
 
          <!--Setings-->

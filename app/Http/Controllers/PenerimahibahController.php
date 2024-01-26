@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Penerimahibah;
+use App\Models\Proposal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Redirect;
@@ -193,6 +194,12 @@ class PenerimahibahController extends Controller
     {
         $kode_penerimahibah = Crypt::decrypt($kode_penerimahibah);
         $penerimahibah = Penerimahibah::where('kode_penerimahibah', $kode_penerimahibah)->first();
-        return view('penerimahibah.show', compact('penerimahibah'));
+        $proposal = Proposal::select('proposal.*', 'jenis_pengajuan_dana', 'tahun')
+            ->join('jenis_pengajuan_dana', 'proposal.id_jenispengajuan_dana', '=', 'jenis_pengajuan_dana.id')
+            ->join('tahun_anggaran', 'proposal.kode_anggaran', '=', 'tahun_anggaran.kode_anggaran')
+            ->where('kode_penerimahibah', $kode_penerimahibah)
+            ->orderBy('no_registrasi')
+            ->get();
+        return view('penerimahibah.show', compact('penerimahibah', 'proposal'));
     }
 }

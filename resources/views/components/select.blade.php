@@ -1,4 +1,4 @@
-@props(['name', 'label', 'data', 'key', 'textShow', 'selected' => ''])
+@props(['name', 'label', 'data', 'key', 'textShow', 'selected' => '', 'uppercase' => false])
 
 
 
@@ -7,7 +7,12 @@
         <option value="">{{ $label }}</option>
         @foreach ($data as $d)
             <option {{ $d->$key == $selected ? 'selected' : '' }} value="{{ $d->$key }}">
-                {{ ucwords(strtolower($d->$textShow)) }}
+                @if ($uppercase)
+                    {{ strtoupper(strtolower($d->$textShow)) }}
+                @else
+                    {{ ucwords(strtolower($d->$textShow)) }}
+                @endif
+
             </option>
         @endforeach
     </select>

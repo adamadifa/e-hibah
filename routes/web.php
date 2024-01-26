@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DisposisiController;
+use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PenerimahibahController;
 use App\Http\Controllers\Permission_groupController;
 use App\Http\Controllers\PermissionController;
@@ -103,9 +105,27 @@ Route::middleware('auth')->group(function () {
         Route::get('/proposal/{kode_penerimahibah}/create', 'create')->name('proposal.create');
         Route::post('/proposal/{kode_penerimahibah}/store', 'store')->name('proposal.store');
         Route::get('/proposal/{kode_anggaran}/edit', 'edit')->name('proposal.edit');
-        Route::put('/proposal/{id}/update', 'update')->name('proposal.update');
-        Route::delete('/proposal/{id}/delete', 'destroy')->name('proposal.delete');
-        Route::get('/proposal/{id}/show', 'show')->name('proposal.show');
+        Route::put('/proposal/{no_registrasi}/update', 'update')->name('proposal.update');
+        Route::delete('/proposal/{no_registrasi}/delete', 'destroy')->name('proposal.delete');
+        Route::get('/proposal/{no_registrasi}/show', 'show')->name('proposal.show');
+    });
+
+
+    Route::controller(PegawaiController::class)->group(function () {
+        Route::get('/pegawai', 'index')->name('pegawai.index');
+        Route::get('/pegawai/create', 'create')->name('pegawai.create');
+        Route::post('/pegawai/store', 'store')->name('pegawai.store');
+        Route::get('/pegawai/{nip}/edit', 'edit')->name('pegawai.edit');
+        Route::get('/pegawai/{nip}/createakun', 'createakun')->name('pegawai.createakun');
+        Route::get('/pegawai/{nip}/editakun', 'editakun')->name('pegawai.editakun');
+        Route::put('/pegawai/{nip}/update', 'update')->name('pegawai.update');
+        Route::delete('/pegawai/{nip}/delete', 'destroy')->name('pegawai.delete');
+    });
+
+
+    Route::controller(DisposisiController::class)->group(function () {
+        Route::get('/disposisi/{no_registrasi}/create', 'create')->name('disposisi.create');
+        Route::post('/disposisi/store', 'store')->name('disposisi.store');
     });
 });
 
